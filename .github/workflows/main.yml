@@ -16,4 +16,4 @@ jobs:
         echo Add other actions to build,
         echo test, and deploy your project.
     - name: Run ESLint
-      uses: stefanoeb/eslint-action@1.0.0
+      uses: hallee/eslint-action@1.0.1
