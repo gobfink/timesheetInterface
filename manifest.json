@@ -1,13 +1,13 @@
 {
   "name": "Timesheet Interface",
-  "version": "1.0",
+  "version": "2.0",
   "description": "User experience GUI for Timesheets",
   "permissions": ["activeTab","declarativeContent","storage"],
   "background": {
     "scripts": ["background.js"],
     "persistent": false
   },
-  "page_action": {
+     "page_action": {
     "default_popup": "popup.html",
     "default_icon": {
       "16": "images/get_started16.png",
