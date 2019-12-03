@@ -11,5 +11,12 @@ function constructOptions(kButtonsColors) {
     });
     page.appendChild(button);
   }
+  let clear_button = document.createElement('button')
+  clear_button.addEventListener('click', function() {
+    chrome.storage.local.remove("counter", function() {
+      alert('Cleared Counter');
+    })
+  });
+  page.appendChild(clear_button);
 }
 constructOptions(kButtonColors);
