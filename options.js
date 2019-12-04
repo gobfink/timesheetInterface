@@ -13,7 +13,7 @@ function constructOptions(kButtonsColors) {
   }
   let clear_button = document.createElement('button')
   clear_button.addEventListener('click', function() {
-    chrome.storage.local.remove("counter", function() {
+    chrome.storage.sync.remove("counter", function() {
       alert('Cleared Counter');
     })
   });
