@@ -11,9 +11,6 @@ jobs:
 #    - name: Run ESLint
 #      uses: hallee/eslint-action@1.0.1
 
-name: Hello
-
-on: [push]
   jobs:
     hello_world_job:
       runs-on: ubuntu-latest
