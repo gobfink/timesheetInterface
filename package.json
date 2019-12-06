@@ -1,7 +1,7 @@
 {
 	"name": "TimeSheetInterface",
 	"version": "0.0.1",
-  "license": "See license in /LICENSE",
+  "license": "/LICENSE",
   "repository": {
     "type": "git",
     "url": "github.com/gobfink/timesheetInterface"
