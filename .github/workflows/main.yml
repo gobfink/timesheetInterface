@@ -13,3 +13,5 @@ jobs:
       run: echo Hello, world!
     - name: Run ESLint
       uses: hallee/eslint-action@1.0.1
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
