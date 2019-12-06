@@ -12,6 +12,6 @@ jobs:
     - name: Run a one-line script
       run: echo Hello, world!
     - name: Run ESLint
-      uses: jinjubei/ESLinter@master #Touch
+      uses: jinjubei/eslint-action@master #Touch
       with:
         who-to-greet: 'Christopher Fortman'
