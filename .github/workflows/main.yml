@@ -12,6 +12,6 @@ jobs:
     - name: Run a one-line script
       run: echo Hello, world!
     - name: Run ESLint
-      uses: hallee/eslint-action@1.0.1
+      uses: gimenete/eslint-action
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
