@@ -11,16 +11,12 @@ jobs:
 #    - name: Run ESLint
 #      uses: hallee/eslint-action@1.0.1
 
-  jobs:
-    hello_world_job:
-      runs-on: ubuntu-latest
-      - name: a job to say hello_world_job
+      name: a job to say hello_world_job
       steps:
-        -name: hello world action
-        id: hello
-        users: jinjubei/ESLinter@v1
-        with:
-          who-to-greet: "Andy"
-
-      - name: get the output time
-      run: echo "The time was ${{ steps.hello.outputs.time }}"
+        - name: hello world action
+          id: hello
+          users: jinjubei/ESLinter@v1
+          with:
+            who-to-greet: "Andy"
+        - name: get the output time
+          run: echo "The time was ${{ steps.hello.outputs.time }}"
