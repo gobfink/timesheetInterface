@@ -15,7 +15,7 @@ jobs:
       steps:
         - name: hello world action
           id: hello
-          users: jinjubei/ESLinter@v1
+          usess: jinjubei/ESLinter@v1
           with:
             who-to-greet: "Andy"
         - name: get the output time
