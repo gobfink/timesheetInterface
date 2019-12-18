@@ -1,16 +1,16 @@
 {
   "name": "Timesheet Interface",
-  "version": "2.0",
+  "version": "2.1",
   "description": "User experience GUI for Timesheets",
   "permissions": ["activeTab","declarativeContent","storage"],
   "manifest_version": 2,
   "content_scripts": [
    {
     "matches": [
-      "https://assett-cp.costpointfoundations.com/cpweb/cploginform.htm*" //this just matches the default login page
+      "https://assett-cp.costpointfoundations.com/cpweb*" //this just matches the default login page
       //<https://assett-cp.costpointfoundations.com>"
     ],
-    "js": ["onload.js"]
+    "js": ["jquery.min.js","onload.js"]
    } 
  ],
   "background": {
