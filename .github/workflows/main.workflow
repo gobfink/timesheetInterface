@@ -6,6 +6,6 @@ workflow "Pull Request" {
 }
 
 action "ESLint" {
-  uses = "hallee/eslint-action@master"
-  secrets = ["GITHUB_TOKEN"]
+  uses = "jinjubei/eslint-action@master"
+  secrets = ${{secrets.GITHUB_TOKEN}}
 }
