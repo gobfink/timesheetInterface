@@ -15,4 +15,4 @@ jobs:
       uses: jinjubei/eslint-action@master #Touch
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
-        who-to-greet: 'Christopher Fortman'
+        
