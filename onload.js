@@ -9,3 +9,4 @@ chrome.storage.sync.get("counter", function(visits){
 });
 
 
+$("#CLIENT_PASSWORD").attr("placeholder","Your password sucks make a better one");
