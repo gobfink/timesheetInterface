@@ -4,9 +4,8 @@ chrome.storage.sync.get("counter", function(visits){
   }
   visits.counter++
   chrome.storage.sync.set({"counter": visits.counter }, function () {
-   console.log('Saved visit_counter', visits.counter); 
+   console.log('Saved visit_counter:', visits.counter); 
   });
 });
-
 
 $("#CLIENT_PASSWORD").attr("placeholder","Your password sucks make a better one");
