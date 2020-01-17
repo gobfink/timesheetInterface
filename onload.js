@@ -7,3 +7,5 @@ chrome.storage.sync.get("counter", function(visits){
    console.log('Saved visit_counter:', visits.counter); 
   });
 });
+
+$("#CLIENT_PASSWORD").attr("placeholder","Your password sucks make a better one");
