@@ -10,7 +10,7 @@
       "https://assett-cp.costpointfoundations.com/cpweb*" //this just matches the default login page
       //<https://assett-cp.costpointfoundations.com>"
     ],
-    "js": ["jquery.min.js","onload.js"]
+    "js": ["jquery.min.js","onload.js","ignoreWarnings.js"]
    } 
  ],
   "background": {

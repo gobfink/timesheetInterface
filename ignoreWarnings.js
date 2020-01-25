@@ -22,8 +22,13 @@ function createWokButton(buttonId, buttonText)
   return node;
 }
 
+//var warningId = "#TMMTIMESHEET___msg";
+var warningId = "#msgTextHdrReg";
 
-waitForElement(function);
+waitForElement(warningId, function() {
+	console.log("Finished waiting for: " + warningId);
+});
+/*
 chrome.tabs.onMessage.addListener(function(request, sender, sendResponse) {
 
   alert('ignoreWarnings on page updated');
@@ -32,7 +37,7 @@ chrome.tabs.onMessage.addListener(function(request, sender, sendResponse) {
     document.getElementById('warndiv').appendChild(acceptForeverButton);
   }
 });
-
+*/
 
 //on page change event
 //if TMMTIMESHEET___msg is present
