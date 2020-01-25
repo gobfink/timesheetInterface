@@ -10,7 +10,7 @@ function waitForElement(selector, callback) {
         }
 }
 
-function createWokButton(buttonId, buttonText)
+function createWokButton(buttonId, buttonText, onclickCallback)
 {
   var node = document.createElement("button");
   
@@ -18,28 +18,38 @@ function createWokButton(buttonId, buttonText)
   node.textContent = buttonText;
   node.setAttribute('class', 'wok');
   node.setAttribute('style', 'border-color: purple; width: 135px');
+  node.onclick = onclickCallback;
   
   return node;
 }
 
-//var warningId = "#TMMTIMESHEET___msg";
-var warningId = "#msgTextHdrReg";
+var warningSelector = "#msgTextHdrReg #warndiv";
+waitForElement(warningSelector, function() {
+	console.log("Finished waiting for: " + warningSelector);
+	
+	var msgSelector = "#msgTextHdrReg .msgText .eLnk"	
+	var messageNodes = document.querySelectorAll(msgSelector);
+	var message = "";
+	messageNodes.forEach(function (node) {
+		message = message + " " + node.text 
+	})
 
-waitForElement(warningId, function() {
-	console.log("Finished waiting for: " + warningId);
+//	chrome.storage.local.get(message, function(){
+
+	console.log("Warning message: " + message);
+	clickCallback = function (){
+		console.log("clickcall back function");
+	};
+	var acceptForeverButton = createWokButton('acceptForeverButton', 'Accept Forever', clickCallback);
+	document.getElementById('warndiv').appendChild(acceptForeverButton);
+
 });
-/*
-chrome.tabs.onMessage.addListener(function(request, sender, sendResponse) {
 
-  alert('ignoreWarnings on page updated');
-  if (request === 'addAcceptForeverButton') {
-    var acceptForeverButton = createWokButton('acceptForeverButton', 'Accept Forever');
-    document.getElementById('warndiv').appendChild(acceptForeverButton);
-  }
-});
-*/
+//if selector is present
+////if warning is in ignorelist
+//////click ok when warning pops up
+////if not 
+//////create new ignore button
+//////// on click add messageText to ignore list
 
-//on page change event
-//if TMMTIMESHEET___msg is present
-////if msg is not already present
-//////create new button
+//also need to make a menu to clear
