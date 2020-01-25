@@ -1,3 +1,5 @@
+var warningSelector = "#msgTextHdrReg #warndiv";
+
 function waitForElement(selector, callback) {
         console.log("Waiting for " + selector);
         if (document.querySelector(selector) == null) {
@@ -23,9 +25,8 @@ function createWokButton(buttonId, buttonText, onclickCallback)
   return node;
 }
 
-var warningSelector = "#msgTextHdrReg #warndiv";
-
-waitForElement(warningSelector, function() {
+function onWarningMessage()
+{
 	console.log("Finished waiting for: " + warningSelector);
 	
 	var msgSelector = "#msgTextHdrReg .msgText .eLnk"	
@@ -34,17 +35,20 @@ waitForElement(warningSelector, function() {
 	messageNodes.forEach(function (node) {
 		message = message + " " + node.text 
 	})
-
 	
     chrome.storage.sync.get({ignoreList: []}, function(result){		
 		var ignoreList = result.ignoreList;
 		if (ignoreList != 'undefined') {	
 			ignoreList.forEach(function(item) { 
 				console.log("gotten - " + item)
+				//compare warnmessage with ignoreList
+				if (item === message)
+				{
+					console.log("message: " + message + " found in ignoreList! ignoring");
+				//if found autoclick ok
+				}
 			});
 		}
-		//compare warnmessage with ignoreList
-		//if found autoclick ok
 	});
 
 	console.log("Warning message: " + message);
@@ -66,11 +70,16 @@ waitForElement(warningSelector, function() {
 				});
 			});
 		});
+		//click ok
 	};
 	var acceptForeverButton = createWokButton('acceptForeverButton', 'Accept Forever', clickCallback);
 	document.getElementById('warndiv').appendChild(acceptForeverButton);
-//re-add waitForElement callback when finished
-});
+	
+	//waitForElement(warningSelector, onWarningMessage);	
+}
+
+
+waitForElement(warningSelector, onWarningMessage);
 
 //if selector is present
 ////if warning is in ignorelist
