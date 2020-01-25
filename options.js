@@ -13,9 +13,12 @@ function constructOptions(kButtonsColors) {
   }
   let clear_button = document.createElement('button')
   clear_button.addEventListener('click', function() {
-    chrome.storage.sync.remove("counter", function() {
+   chrome.storage.sync.clear(function(){
+	   alert ('Cleared sync storage')
+   });  
+  /*  chrome.storage.sync.remove("counter", function() {
       alert('Cleared Counter');
-    })
+  */  
   });
   page.appendChild(clear_button);
 }
