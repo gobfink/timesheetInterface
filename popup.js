@@ -11,10 +11,7 @@ changeColor.onclick = function(element) {
     chrome.tabs.executeScript(
       tabs[0].id,
       {code: 'document.querySelectorAll("*").forEach(element => element.style.backgroundColor = "' + color + '" );'//,
-    //  tabs[1].id,
-     // {code: 'chrome.storage.local.get("counter", function(visits){console.log("visits.counter: ", visits.counter)});'}
-//      {code: 'chrome.storage.sync.set({ "username" : "' + document.getElementById("USER").value' +"});
       });
   });
 };
-//https://stackoverflow.com/questions/5364062/how-can-i-save-information-locally-in-my-chrome-extension
+
