@@ -25,57 +25,76 @@ function createWokButton(buttonId, buttonText, onclickCallback)
   return node;
 }
 
+function acceptWarning()
+{
+	//var clickSelector = "#TMMTIMESHEET___msg #warndiv #woc"; //This one is for the cancel button - for testing
+	var clickSelector = "#TMMTIMESHEET___msg #warndiv #wok";
+	var closeSelector = "#TMMTIMESHEET___msg #closeM";
+	
+	document.querySelector(clickSelector).click()
+	document.querySelector(closeSelector).click()
+}
+
+
 function onWarningMessage()
 {
 	console.log("Finished waiting for: " + warningSelector);
 	
-	var msgSelector = "#msgTextHdrReg .msgText .eLnk"	
+	var msgSelector = "#msgTextHdrReg .msgText .eLnk";	
 	var messageNodes = document.querySelectorAll(msgSelector);
 	var message = "";
+	
+	
 	messageNodes.forEach(function (node) {
 		message = message + " " + node.text 
 	})
 	
     chrome.storage.sync.get({ignoreList: []}, function(result){		
-		var ignoreList = result.ignoreList;
-		if (ignoreList != 'undefined') {	
-			ignoreList.forEach(function(item) { 
-				console.log("gotten - " + item)
-				//compare warnmessage with ignoreList
-				if (item === message)
-				{
-					console.log("message: " + message + " found in ignoreList! ignoring");
-				//if found autoclick ok
-				}
-			});
-		}
-	});
-
-	console.log("Warning message: " + message);
-	clickCallback = function (){
-		console.log("clickcall back function");
-		chrome.storage.sync.get({ignoreList: []}, function (result) {
-			var ignoreList = result.ignoreList;
-			if (!ignoreList.includes(message)){
-				ignoreList.push(message);
-				console.log("adding: " + message +" to ignoreList");
-			}
-			else {
-				console.log("ignoreList already contained - "+ignoreList);
-			}
-			
-			chrome.storage.sync.set({ignoreList: ignoreList}, function () {
-				ignoreList.forEach(function(item) { 
-				console.log("item - " + item)
-				});
-			});
-		});
-		//click ok
-	};
-	var acceptForeverButton = createWokButton('acceptForeverButton', 'Accept Forever', clickCallback);
-	document.getElementById('warndiv').appendChild(acceptForeverButton);
+       		var ignoreList = result.ignoreList;
+       		if (ignoreList != 'undefined') {	
+       			ignoreList.forEach(function(item) { 
+       				console.log("gotten - " + item)
+       				//compare warnmessage with ignoreList
+       				if (item === message)
+       				{
+           				//if found autoclick ok
+       					acceptWarning()
+       					console.log("message: " + message + " found in ignoreList! ignored!");
+						return
+       				}
+       			});
+       		}
+       		//TODO hook waitForElement function up again
+       
+       	console.log("Warning message: " + message);
+       	clickCallback = function (){
+       		console.log("clickcall back function");
+       		chrome.storage.sync.get({ignoreList: []}, function (result) {
+       			var ignoreList = result.ignoreList;
+       			if (!ignoreList.includes(message)){
+       				ignoreList.push(message);
+       				console.log("adding: " + message +" to ignoreList");
+       			}
+       			else {
+       				console.log("ignoreList already contained - "+ignoreList);
+       			}
+       			
+       			chrome.storage.sync.set({ignoreList: ignoreList}, function () {
+       				ignoreList.forEach(function(item) { 
+       				console.log("item - " + item)
+       				});
+       			});
+       		});
+       		//click ok
+       		acceptWarning()
+       	
+           	// TODO hook button up again?
+       	};
+       	var acceptForeverButton = createWokButton('acceptForeverButton', 'Accept Forever', clickCallback);
+       	document.getElementById('warndiv').appendChild(acceptForeverButton);
 	
 	//waitForElement(warningSelector, onWarningMessage);	
+	});
 }
 
 
