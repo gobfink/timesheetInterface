@@ -13,6 +13,7 @@ function constructOptions(kButtonsColors) {
   }
   let clear_button = document.createElement('button')
   clear_button.innerHTML = 'Clear Storage';   
+  clear_button.style.width = '100px'; 
   clear_button.addEventListener('click', function() {
      chrome.storage.sync.clear(function(){
 	   alert ('Cleared sync storage')
